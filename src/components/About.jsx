@@ -59,7 +59,9 @@ export default function About() {
                                 marginTop: "1.8rem",
                                 flexWrap: "wrap"
                             }}>
-                                <button className="btn-p">Download CV</button>
+                                <a href="/Talha Ahmad.pdf" download>
+                                    <button className="btn-p">Download CV</button>
+                                </a>
                                 <button className="btn-o" onClick={() => scrollTo('contact')}>Let's Talk</button>
                             </div>
                         </div>
