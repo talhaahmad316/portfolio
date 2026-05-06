@@ -768,7 +768,8 @@ section {
   font-size: .73rem;
   color: var(--muted);
   line-height: 1.55;
-  margin-bottom: .8rem
+  margin-bottom: .8rem;
+  min-height: 80px;
 }
 
 .sb {
@@ -921,7 +922,12 @@ section {
   color: var(--muted);
   line-height: 1.65;
   flex: 1;
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
+
+   display: -webkit-box;
+  -webkit-line-clamp: 4;   /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .pf {
@@ -1195,4 +1201,9 @@ footer span {
   .fr {
     grid-template-columns: 1fr
   }
+}
+
+.wa-link {
+  text-decoration: none;
+  color: white;
 }

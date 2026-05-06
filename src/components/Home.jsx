@@ -20,7 +20,7 @@ export default function Home() {
                             <span className="pill">REST APIs</span>
                             <span className="pill">MySQL</span>
                             <span className="pill">Tailwind CSS</span>
-                            <span className="pill">Docker</span>
+                            <span className="pill">Bootstrap</span>
                         </div>
                         <div className="hero-btns">
                             <button className="btn-p" onClick={() => scrollTo('projects')}>View My Work</button>
