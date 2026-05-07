@@ -41,7 +41,7 @@ export default function Skills() {
 
     return (
         <>
-            <section id="skills" className="skills-sec container-fluid py-5">
+            <section id="skills" className="skills-sec container-fluid py-5" style={{marginTop:"-120px"}}>
                 <div>
 
                     <div className="rv text-center mb-5">

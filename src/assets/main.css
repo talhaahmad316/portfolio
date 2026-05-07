@@ -43,8 +43,7 @@ body {
   border-radius: 3px
 }
 
-/* CURSOR */
-.cur {
+/* CURSOR */ur {
   width: 9px;
   height: 9px;
   background: var(--blue);
@@ -326,7 +325,8 @@ body {
   font-size: .88rem;
   cursor: pointer;
   transition: all .25s;
-  font-family: var(--fb)
+  font-family: var(--fb);
+  text-decoration: none;
 }
 
 .btn-p:hover {
@@ -344,7 +344,9 @@ body {
   font-size: .88rem;
   cursor: pointer;
   transition: all .25s;
-  font-family: var(--fb)
+  font-family: var(--fb);
+  text-decoration: none;
+
 }
 
 .btn-o:hover {
@@ -848,6 +850,9 @@ section {
 }
 
 .pv.c3 {
+  background: linear-gradient(135deg, #1f0d2c, #3b1a5e)
+}
+.pv.c4 {
   background: linear-gradient(135deg, #1f0d2c, #3b1a5e)
 }
 

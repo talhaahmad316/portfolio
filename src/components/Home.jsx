@@ -22,9 +22,10 @@ export default function Home() {
                             <span className="pill">Tailwind CSS</span>
                             <span className="pill">Bootstrap</span>
                         </div>
-                        <div className="hero-btns">
-                            <button className="btn-p" onClick={() => scrollTo('projects')}>View My Work</button>
-                            <button className="btn-o" onClick={() => scrollTo('contact')}>Get in Touch</button>
+                        <div className="hero-btns" style={{textDecoration:"none"}}>
+
+                            <a className="btn-p" href="#projects">View My Work</a>
+                            <a className="btn-o" href="#contact">Get in Touch</a>
                         </div>
                     </div>
 

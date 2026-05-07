@@ -19,6 +19,22 @@ export default function About() {
                                     <div className="astat"><div className="astat-n">15+</div><div className="astat-l">Happy Clients</div></div>
                                     <div className="astat"><div className="astat-n">99%</div><div className="astat-l">Satisfaction</div></div>
                                 </div>
+                                <div style={{
+                                    border: "1px solid rgba(255,255,255,0.15)",
+                                    borderRadius: "16px",
+                                    padding: "20px",
+                                    background: "rgba(255,255,255,0.03)",
+                                    boxShadow: "0 0 25px rgba(0, 153, 255, 0.25)",
+                                    backdropFilter: "blur(10px)",
+                                    marginTop: "20px"
+                                }}>
+                                    <h3>Career Timeline</h3>
+                                    <div className="tl">
+                                        <div className="ti"><div className="ty">2023 – PRESENT</div><div className="tr">Full Stack Developer</div><div className="tc">Freelance / Remote</div></div>
+                                        <div className="ti"><div className="ty">2023 – PRESENT</div><div className="tr">Full Stack Developer</div><div className="tc">Solutions Wave Pvt Ltd, Lahore</div></div>
+                                        <div className="ti"><div className="ty">2024 – 2025</div><div className="tr">PHP Laravel Developer</div><div className="tc">TechWrath, Lahore</div></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -39,30 +55,36 @@ export default function About() {
                                 <div className="di"><span className="di-icon">🌐</span><div><div className="dl">Languages</div><div className="dv">Urdu, English (Fluent)</div></div></div>
                             </div>
 
-                            <h3 style={{ marginBottom: ".75rem" }}>Career Timeline</h3>
-                            <div className="tl">
-                                <div className="ti"><div className="ty">2023 – PRESENT</div><div className="tr">Full Stack Developer</div><div className="tc">Freelance / Remote — International Clients</div></div>
-                                {/* <div className="ti"><div className="ty">2022 – 2024</div><div className="tr">Junior Full Stack Developer</div><div className="tc">TechVentures Pvt Ltd, Lahore</div></div>
-                                <div className="ti"><div className="ty">2021 – 2022</div><div className="tr">PHP Developer Intern</div><div className="tc">WebCraft Studio, Lahore</div></div> */}
-                            </div>
-
-                            <h3 style={{ margin: "1.4rem 0 .7rem" }}>Interests & Hobbies</h3>
-                            <div className="interests">
-                                <span className="itag">Open Source</span><span className="itag">UI/UX Design</span><span className="itag">Tech Blogging</span>
-                                <span className="itag">Chess</span><span className="itag">Hiking</span><span className="itag">Sci-Fi Books</span>
-                                <span className="itag">Coffee ☕</span><span className="itag">Mechanical Keyboards</span>
-                            </div>
-
                             <div style={{
-                                display: "flex",
-                                gap: ".9rem",
-                                marginTop: "1.8rem",
-                                flexWrap: "wrap"
+                                border: "1px solid rgba(255,255,255,0.15)",
+                                borderRadius: "16px",
+                                padding: "20px",
+                                background: "rgba(255,255,255,0.03)",
+                                boxShadow: "0 0 25px rgba(0, 153, 255, 0.25)",
+                                backdropFilter: "blur(10px)",
+                                marginTop: "20px"
                             }}>
-                                <a href="/Talha Ahmad.pdf" download>
-                                    <button className="btn-p">Download CV</button>
-                                </a>
-                                <button className="btn-o" onClick={() => scrollTo('contact')}>Let's Talk</button>
+
+
+                                <h3 style={{ margin: "1.4rem 0 .7rem" }}>Interests & Hobbies</h3>
+                                <div className="interests">
+                                    <span className="itag">Open Source</span><span className="itag">UI/UX Design</span><span className="itag">Tech Blogging</span>
+                                    <span className="itag">Chess</span><span className="itag">Hiking</span><span className="itag">Sci-Fi Books</span>
+                                    <span className="itag">Coffee ☕</span><span className="itag">Mechanical Keyboards</span>
+                                </div>
+
+                                <div style={{
+                                    display: "flex",
+                                    gap: ".9rem",
+                                    marginTop: "1.8rem",
+                                    flexWrap: "wrap"
+                                }}>
+                                    <a href="/Talha Ahmad.pdf" download>
+                                        <button className="btn-p">Download CV</button>
+                                    </a>
+                                    <a style={{textDecoration:"none"}} href="#contact" className="btn-o">Let's Talk</a>
+                                    {/* <button className="btn-o" onClick={() => scrollTo('contact')}>Let's Talk</button> */}
+                                </div>
                             </div>
                         </div>
                     </div>
