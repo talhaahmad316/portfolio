@@ -82,8 +82,8 @@ export default function About() {
                                     <a href="/Talha Ahmad.pdf" download>
                                         <button className="btn-p">Download CV</button>
                                     </a>
-                                    <a style={{textDecoration:"none"}} href="#contact" className="btn-o">Let's Talk</a>
-                                    {/* <button className="btn-o" onClick={() => scrollTo('contact')}>Let's Talk</button> */}
+                                    {/* <a style={{textDecoration:"none"}} href="#contact" className="btn-o">Let's Talk</a> */}
+                                    <button className="btn-o" onClick={() => scrollTo('contact')}>Let's Talk</button>
                                 </div>
                             </div>
                         </div>

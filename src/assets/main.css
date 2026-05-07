@@ -43,7 +43,8 @@ body {
   border-radius: 3px
 }
 
-/* CURSOR */ur {
+/* CURSOR */
+.cur {
   width: 9px;
   height: 9px;
   background: var(--blue);
