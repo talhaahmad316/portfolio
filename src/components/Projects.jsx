@@ -1,7 +1,13 @@
+import img1 from "../assets/monmatics.png";
+import img2 from "../assets/marketplace.png";
+import img3 from "../assets/cnc.png";
+import img4 from "../assets/ngo.png";
+
 export default function Projects() {
 
     const projects = [
         {
+            image:img1,
             icon: "🏢",
             class: "c1",
             title: "Monmatics ERP System",
@@ -12,6 +18,7 @@ export default function Projects() {
             link: "https://monmatics.com/"
         },
         {
+            image:img2,
             icon: "🚚",
             class: "c3",
             title: "Freight Workspace (Upwork-Inspired Platform)",
@@ -21,6 +28,7 @@ export default function Projects() {
             delay: ".2s"
         },
         {
+            image:img3,
             icon: "🛠️",
             class: "c2",
             title: "CNC System",
@@ -31,6 +39,7 @@ export default function Projects() {
             link: "https://dev.monmatics.com/cnc"
         },
         {
+            image:img4,
             icon: "🏢",
             class: "c4",
             title: "Monmatics NGO Management System",
@@ -63,8 +72,7 @@ export default function Projects() {
                                     style={{ transitionDelay: project.delay }}
                                 >
                                     <div className={`pv ${project.class}`}>
-                                        {project.icon}
-                                    </div>
+                                        <img src={project.image} alt={project.title} />                                    </div>
 
                                     <div className="pb">
 
