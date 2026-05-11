@@ -1,7 +1,7 @@
-import img1 from "../assets/monmatics.png";
-import img2 from "../assets/marketplace.png";
-import img3 from "../assets/cnc.png";
-import img4 from "../assets/ngo.png";
+import img1 from "../assets/images/monmatics.png";
+import img2 from "../assets/images/marketplace.png";
+import img3 from "../assets/images/cnc.png";
+import img4 from "../assets/images/ngo.png";
 
 export default function Projects() {
 
@@ -25,7 +25,8 @@ export default function Projects() {
             desc: "Developed a two-sided freelance marketplace inspired by Upwork, designed specifically for freight forwarding services. The system includes separate customer and freight forwarder registrations, job posting, bidding system, and job acceptance workflow. Customers post shipping-related jobs, while freight forwarders place bids and get selected based on proposals.",
             badges: ["React.js", "Laravel", "MySQL", "Bootstrap"],
             rating: "4.9",
-            delay: ".2s"
+            delay: ".2s",
+            link:"https://mycargomanager.com/"
         },
         {
             image:img3,

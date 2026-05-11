@@ -48,11 +48,11 @@ export default function About() {
                                 <div className="di"><span className="di-icon">📛</span><div><div className="dl">Full Name</div><div className="dv">Talha Ahmad (Full Stack Dev)</div></div></div>
                                 <div className="di"><span className="di-icon">📍</span><div><div className="dl">Location</div><div className="dv">Lahore, Punjab, Pakistan</div></div></div>
                                 <div className="di"><span className="di-icon">📧</span><div><div className="dl">Email</div><div className="dv"><a href="mailto:talhaahmad316@gmail.com">talhaahmad316@gmail.com</a> </div></div></div>
-                                <div className="di"><span className="di-icon">📞</span><div><div className="dl">Phone</div><div className="dv"><a href="tel:+923013493802">+92 301 349 3802</a> </div></div></div>
+                                <div className="di"><span className="di-icon">📞</span><div><div className="dl">Phone</div><div className="dv"><a href="https://wa.me/923013493802" target="_blank">+92 301 349 3802</a> </div></div></div>
                                 <div className="di"><span className="di-icon">🎓</span><div><div className="dl">Degree</div><div className="dv">BS Computer Science</div></div></div>
                                 <div className="di"><span className="di-icon">🏫</span><div><div className="dl">University</div><div className="dv">Government College University Faisalabad</div></div></div>
                                 <div className="di"><span className="di-icon">💼</span><div><div className="dl">Experience</div><div className="dv">3+ Years Professional</div></div></div>
-                                <div className="di"><span className="di-icon">🌐</span><div><div className="dl">Languages</div><div className="dv">Urdu, English (Fluent)</div></div></div>
+                                <div className="di"><span className="di-icon">🌐</span><div><div className="dl">Languages</div><div className="dv">English (Fluent), Urdu, Punjabi</div></div></div>
                             </div>
 
                             <div style={{
