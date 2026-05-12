@@ -13,6 +13,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './layout/Footer';
+import Preloader from './components/Preloader';
 
 function App() {
 
@@ -27,27 +28,15 @@ function App() {
       <div id="cur" className="cur"></div>
       <div id="ring" className="cur-ring"></div>
 
-      <Navbar />
-      <div>
-        <Home />
-      </div>
-      <div>
-        <About />
-      </div>
-      <div>
-        <Skills/>
-      </div>
-      <div>
-        <Projects/>
-      </div>
+         <Preloader />
 
-      <div>
-        <Contact/>
-      </div>
-
-      <div>
-        <Footer/>
-      </div>
+      <div><Navbar /></div>
+      <div><Home /></div>
+      <div><About /></div>
+      <div><Skills /></div>
+      <div><Projects /></div>
+      <div><Contact /></div>
+      <div><Footer /></div>
     </>
   )
 }

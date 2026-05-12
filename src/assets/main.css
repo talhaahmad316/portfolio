@@ -1251,3 +1251,43 @@ footer span {
   text-decoration: none;
   color: white;
 }
+
+
+/* Preeloader */
+
+ #main-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      gap: 16px;
+      animation: fadeInContent 0.8s ease forwards;
+    }
+    @keyframes fadeInContent {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #main-content h1 {
+      font-size: 40px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    #main-content p { color: rgba(255,255,255,0.5); font-size: 15px; letter-spacing: 1px; }
+    #replay-btn {
+      margin-top: 24px;
+      padding: 10px 28px;
+      background: transparent;
+      border: 1px solid rgba(127,119,221,0.5);
+      color: #7F77DD;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+    #replay-btn:hover { background: #534AB7; color: #fff; }
