@@ -44,7 +44,7 @@ body {
 }
 
 /* CURSOR */
-.cur {
+/* .cur {
   width: 9px;
   height: 9px;
   background: var(--blue);
@@ -66,6 +66,100 @@ body {
   z-index: 9998;
   transform: translate(-50%, -50%);
   transition: all .22s ease
+} */
+
+/* =========================
+   PREMIUM CURSOR
+========================= */
+
+.cur {
+  width: 10px;
+  height: 10px;
+  background: #3b82f6;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition:
+    width .25s ease,
+    height .25s ease,
+    background .25s ease,
+    transform .08s linear;
+
+  box-shadow:
+    0 0 10px rgba(59, 130, 246, 0.7),
+    0 0 20px rgba(59, 130, 246, 0.35);
+}
+
+/* OUTER RING */
+
+.cur-ring {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid rgba(59, 130, 246, 0.45);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition:
+    width .3s ease,
+    height .3s ease,
+    border .3s ease,
+    transform .12s ease,
+    background .3s ease;
+
+  background: transparent;
+
+  box-shadow:
+    0 0 18px rgba(59, 130, 246, 0.18);
+}
+
+/* =========================
+   BUTTON HOVER EFFECT
+========================= */
+
+.cur.active {
+  width: 18px;
+  height: 18px;
+  background: white;
+  mix-blend-mode: difference;
+}
+
+.cur-ring.active {
+  width: 68px;
+  height: 68px;
+  border: 2px solid #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* =========================
+   CLICK EFFECT
+========================= */
+
+.cur.click {
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+.cur-ring.click {
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+/* =========================
+   HIDE ON MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .cur,
+  .cur-ring {
+    display: none;
+  }
+
+  * {
+    cursor: auto !important;
+  }
 }
 
 /* NAV */
@@ -1255,39 +1349,58 @@ footer span {
 
 /* Preeloader */
 
- #main-content {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      gap: 16px;
-      animation: fadeInContent 0.8s ease forwards;
-    }
-    @keyframes fadeInContent {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    #main-content h1 {
-      font-size: 40px;
-      font-weight: 500;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #fff;
-    }
-    #main-content p { color: rgba(255,255,255,0.5); font-size: 15px; letter-spacing: 1px; }
-    #replay-btn {
-      margin-top: 24px;
-      padding: 10px 28px;
-      background: transparent;
-      border: 1px solid rgba(127,119,221,0.5);
-      color: #7F77DD;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.2s, color 0.2s;
-    }
-    #replay-btn:hover { background: #534AB7; color: #fff; }
+#main-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  gap: 16px;
+  animation: fadeInContent 0.8s ease forwards;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#main-content h1 {
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+#main-content p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+#replay-btn {
+  margin-top: 24px;
+  padding: 10px 28px;
+  background: transparent;
+  border: 1px solid rgba(127, 119, 221, 0.5);
+  color: #7F77DD;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+#replay-btn:hover {
+  background: #534AB7;
+  color: #fff;
+}

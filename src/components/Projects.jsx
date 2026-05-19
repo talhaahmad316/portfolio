@@ -7,7 +7,7 @@ export default function Projects() {
 
     const projects = [
         {
-            image:img1,
+            image: img1,
             icon: "🏢",
             class: "c1",
             title: "Monmatics ERP System",
@@ -18,7 +18,7 @@ export default function Projects() {
             link: "https://monmatics.com/"
         },
         {
-            image:img2,
+            image: img2,
             icon: "🚚",
             class: "c3",
             title: "Freight Workspace (Upwork-Inspired Platform)",
@@ -26,10 +26,10 @@ export default function Projects() {
             badges: ["React.js", "Laravel", "MySQL", "Bootstrap"],
             rating: "4.9",
             delay: ".2s",
-            link:"https://mycargomanager.com/"
+            link: "https://mycargomanager.com/"
         },
         {
-            image:img3,
+            image: img3,
             icon: "🛠️",
             class: "c2",
             title: "CNC System",
@@ -40,14 +40,15 @@ export default function Projects() {
             link: "https://dev.monmatics.com/cnc"
         },
         {
-            image:img4,
+            image: img4,
             icon: "🏢",
             class: "c4",
             title: "Monmatics NGO Management System",
             desc: "Worked on the Accounts and Admin modules of an NGO management system, focusing on financial operations and system administration. Implemented features for donation tracking, fund management, and automated financial reporting. Also developed the Admin module for managing user roles, permissions, and ensuring smooth system operations for administrators, improving overall efficiency and control of organizational workflows.",
             badges: ["Laravel", "MySQL", "Admin Panel", "Accounting System"],
             rating: "4.8",
-            delay: ".3s"
+            delay: ".3s",
+            link: "https://monmatics.com/markaz"
         }
     ];
 

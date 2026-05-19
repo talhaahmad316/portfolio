@@ -32,7 +32,7 @@ export default function Preloader() {
 
         const exitTimeout = setTimeout(() => {
             setHide(true);
-        }, 3800);
+        }, 2000);
 
         return () => {
             clearTimeout(delayTimeout);
