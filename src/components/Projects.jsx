@@ -4,6 +4,7 @@ import img2 from '../assets/images/marketplace.png';
 import img3 from '../assets/images/cnc.png';
 import img4 from '../assets/images/ngo.png';
 import img5 from '../assets/images/audit.png';
+import img6 from '../assets/images/ucl.png';
 
 const projects = [
   {
@@ -45,6 +46,14 @@ const projects = [
     desc: 'A structured audit record-keeping system for tracking, managing, and reporting audit entries.',
     badges: ['Laravel', 'React.js', 'MySQL', 'AJAX', 'jQuery', 'Bootstrap'],
     demo: 'https://audit.monmatics.com/',
+  },
+  {
+    image: img6,
+    class: 'c6',
+    title: 'Cricket Tournament Manager',
+    desc: 'A Laravel backend system for managing cricket teams, players, tournaments, and live scorecards — with fully documented REST APIs built for frontend integration.',
+    badges: ['Laravel', 'MySQL', 'REST API', 'Admin Panel'],
+    demo: null,
   },
 ];
 
