@@ -1,0 +1,136 @@
+﻿.about-sec { background: var(--bg2); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-grid-compact { margin-top: 1rem; }
+.ap-wrap { position: relative; }
+
+.ap {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.ap img { width: 100%; display: block; filter: brightness(.9); }
+
+.ap-deco {
+  position: absolute;
+  inset: -8px;
+  border-radius: 22px;
+  border: 1px dashed rgba(59, 130, 246, .22);
+  pointer-events: none;
+}
+
+.astats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .85rem;
+  margin-top: 1.25rem;
+}
+
+.astat,
+.about-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+}
+
+.astat { padding: .9rem; text-align: center; }
+
+.astat-n {
+  font-family: var(--fh);
+  font-size: 1.9rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.astat-l {
+  font-size: .68rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: .15rem;
+}
+
+.about-card { padding: 1.6rem; }
+
+.ac h3 {
+  font-family: var(--fh);
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: .9rem;
+}
+
+.ac p {
+  color: var(--muted);
+  line-height: 1.85;
+  font-size: .95rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.adetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+  margin: 1.5rem 0;
+}
+
+.di {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  min-width: 0;
+}
+
+.di-icon {
+  color: var(--blue);
+  font-size: .72rem;
+  font-weight: 800;
+  margin-top: .12rem;
+  flex-shrink: 0;
+  min-width: 22px;
+  text-transform: uppercase;
+}
+
+.dl {
+  font-size: .68rem;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.dv,
+.dv a {
+  font-size: .86rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.dv a:hover { color: var(--blue); }
+
+.about-actions {
+  display: flex;
+  gap: .9rem;
+  flex-wrap: wrap;
+  margin-top: 1.4rem;
+}
+
+@media(max-width:860px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .ap-wrap { max-width: 360px; }
+}
+
+@media(max-width:560px) {
+  .adetails { grid-template-columns: 1fr; }
+}

@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import './assets/main.css'
+﻿import { useEffect, useState } from 'react';
+import './App.css';
+import './assets/main.css';
 import { initAnimations } from './assets/Main';
 
 import Navbar from './layout/Navbar';
@@ -16,27 +13,33 @@ import Footer from './layout/Footer';
 import Preloader from './components/Preloader';
 
 function App() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
 
   useEffect(() => {
-    initAnimations();
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
+    const cleanup = initAnimations();
+    return cleanup;
   }, []);
-  const [count, setCount] = useState(0)
 
-  // CURSOR EFFECT
   useEffect(() => {
-    const cur = document.querySelector(".cur");
-    const ring = document.querySelector(".cur-ring");
+    const cur = document.querySelector('.cur');
+    const ring = document.querySelector('.cur-ring');
+
+    if (!cur || !ring) return undefined;
 
     let mouseX = 0;
     let mouseY = 0;
-
     let ringX = 0;
     let ringY = 0;
+    let frameId;
 
     const moveCursor = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-
       cur.style.left = `${mouseX}px`;
       cur.style.top = `${mouseY}px`;
     };
@@ -44,47 +47,51 @@ function App() {
     const animateRing = () => {
       ringX += (mouseX - ringX) * 0.15;
       ringY += (mouseY - ringY) * 0.15;
-
       ring.style.left = `${ringX}px`;
       ring.style.top = `${ringY}px`;
+      frameId = requestAnimationFrame(animateRing);
+    };
 
-      requestAnimationFrame(animateRing);
+    const hoverIn = () => {
+      cur.classList.add('active');
+      ring.classList.add('active');
+    };
+
+    const hoverOut = () => {
+      cur.classList.remove('active');
+      ring.classList.remove('active');
+    };
+
+    const clickIn = () => {
+      cur.classList.add('click');
+      ring.classList.add('click');
+    };
+
+    const clickOut = () => {
+      cur.classList.remove('click');
+      ring.classList.remove('click');
     };
 
     animateRing();
+    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('mousedown', clickIn);
+    window.addEventListener('mouseup', clickOut);
 
-    window.addEventListener("mousemove", moveCursor);
-
-    // BUTTON HOVER EFFECT
-    const hoverElements = document.querySelectorAll(
-      "button, a, .btn, input, textarea"
-    );
-
+    const hoverElements = document.querySelectorAll('button, a, .btn, input, textarea, select');
     hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", () => {
-        cur.classList.add("active");
-        ring.classList.add("active");
-      });
-
-      el.addEventListener("mouseleave", () => {
-        cur.classList.remove("active");
-        ring.classList.remove("active");
-      });
-    });
-
-    // CLICK EFFECT
-    window.addEventListener("mousedown", () => {
-      cur.classList.add("click");
-      ring.classList.add("click");
-    });
-
-    window.addEventListener("mouseup", () => {
-      cur.classList.remove("click");
-      ring.classList.remove("click");
+      el.addEventListener('mouseenter', hoverIn);
+      el.addEventListener('mouseleave', hoverOut);
     });
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('mousedown', clickIn);
+      window.removeEventListener('mouseup', clickOut);
+      hoverElements.forEach((el) => {
+        el.removeEventListener('mouseenter', hoverIn);
+        el.removeEventListener('mouseleave', hoverOut);
+      });
     };
   }, []);
 
@@ -94,16 +101,15 @@ function App() {
       <div id="ring" className="cur-ring"></div>
 
       <Preloader />
-
-      <div><Navbar /></div>
-      <div><Home /></div>
-      <div><About /></div>
-      <div><Skills /></div>
-      <div><Projects /></div>
-      <div><Contact /></div>
-      <div><Footer /></div>
+      <Navbar theme={theme} onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
+      <Home />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

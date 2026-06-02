@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import '../assets/Preloader.css'
+import '../assets/css/Preloader.css';
 
 export default function Preloader() {
     const [progress, setProgress] = useState(0);

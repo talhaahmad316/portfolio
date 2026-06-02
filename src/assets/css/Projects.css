@@ -1,0 +1,127 @@
+﻿.projects-sec { background: var(--bg); }
+
+.pg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.pc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  overflow: hidden;
+  transition: all .3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.pc:hover {
+  border-color: rgba(59, 130, 246, .3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .22);
+}
+
+.pv {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+}
+
+.pv::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 45%, rgba(8, 11, 18, .82));
+}
+
+.pv img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .4s;
+}
+
+.pc:hover .pv img { transform: scale(1.05); }
+
+.pv.c1 { background: linear-gradient(135deg, #0f1f3d, #1e3a6e); }
+.pv.c2 { background: linear-gradient(135deg, #0d2618, #1a4731); }
+.pv.c3 { background: linear-gradient(135deg, #1f0d2c, #3b1a5e); }
+.pv.c4 { background: linear-gradient(135deg, #102a36, #174459); }
+
+.pb {
+  padding: 1.3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pbadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .38rem;
+  margin-bottom: .9rem;
+}
+
+.bge {
+  font-size: .62rem;
+  font-weight: 800;
+  padding: .2rem .62rem;
+  border-radius: 4px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  background: rgba(59, 130, 246, .12);
+  color: var(--blue2);
+  border: 1px solid rgba(59, 130, 246, .22);
+}
+
+.pt {
+  font-family: var(--fh);
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: .45rem;
+}
+
+.pd {
+  font-size: .84rem;
+  color: var(--muted);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.pf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: .9rem;
+}
+
+.pl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .85rem;
+}
+
+.pl a {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--blue2);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.pl a:hover { color: var(--cyan); }
+
+@media(max-width:980px) {
+  .pg { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media(max-width:640px) {
+  .pg { grid-template-columns: 1fr; }
+}
