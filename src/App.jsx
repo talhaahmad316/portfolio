@@ -8,17 +8,28 @@ import Home from './components/Home';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './layout/Footer';
 import Preloader from './components/Preloader';
+import { languages, translations } from './data/translations';
 
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+  const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'en');
+  const activeLanguage = languages.find((item) => item.code === language) || languages[0];
+  const t = translations[activeLanguage.code] || translations.en;
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.lang = activeLanguage.code;
+    document.documentElement.dir = activeLanguage.dir;
+    localStorage.setItem('language', activeLanguage.code);
+  }, [activeLanguage]);
 
   useEffect(() => {
     const cleanup = initAnimations();
@@ -101,13 +112,21 @@ function App() {
       <div id="ring" className="cur-ring"></div>
 
       <Preloader />
-      <Navbar theme={theme} onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
-      <Home />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
+      <Navbar
+        theme={theme}
+        language={activeLanguage.code}
+        languages={languages}
+        t={t.nav}
+        onChangeLanguage={setLanguage}
+        onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      />
+      <Home t={t.home} />
+      <About t={t.about} />
+      <Skills t={t.skills} />
+      <Projects t={t.projects} />
+      <Blog t={t.blog} />
+      <Contact t={t.contact} />
+      <Footer t={t.footer} />
     </>
   );
 }

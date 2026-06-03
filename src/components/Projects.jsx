@@ -10,57 +10,51 @@ const projects = [
   {
     image: img1,
     class: 'c1',
-    title: 'Monmatics ERP System',
-    desc: 'A modular ERP platform for CRM, accounts, HRM, sales, projects, and ticket management.',
+    textIndex: 0,
     badges: ['Laravel', 'React.js', 'MySQL', 'AJAX','jQuery', 'Bootstrap'],
     demo: 'https://monmatics.com/',
   },
   {
     image: img2,
     class: 'c3',
-    title: 'Freight Workspace',
-    desc: 'A two-sided freight services marketplace with jobs, bidding, proposals, and acceptance flows.',
+    textIndex: 1,
     badges: ['React.js', 'Laravel', 'MySQL', 'Bootstrap'],
     demo: 'https://mycargomanager.com/',
   },
   {
     image: img3,
     class: 'c2',
-    title: 'CNC System',
-    desc: 'A CNC automation tool for DAT and G-code generation with optimized machining workflows.',
+    textIndex: 2,
     badges: ['Laravel', 'MySQL', 'AJAX', 'jQuery', 'Bootstrap'],
     demo: 'https://dev.monmatics.com/cnc',
   },
   {
     image: img4,
     class: 'c4',
-    title: 'NGO Management System',
-    desc: 'An admin and accounts system for donation tracking, fund management, and reporting.',
+    textIndex: 3,
     badges: ['Laravel', 'MySQL', 'Admin Panel', 'Accounting'],
     demo: 'https://monmatics.com/markaz',
   },
   {
     image: img5,        // ← add your audit screenshot as img5
     class: 'c5',
-    title: 'Audit Management System',
-    desc: 'A structured audit record-keeping system for tracking, managing, and reporting audit entries.',
+    textIndex: 4,
     badges: ['Laravel', 'React.js', 'MySQL', 'AJAX', 'jQuery', 'Bootstrap'],
     demo: 'https://audit.monmatics.com/',
   },
   {
     image: img6,
     class: 'c6',
-    title: 'Cricket Tournament Manager',
-    desc: 'A Laravel backend system for managing cricket teams, players, tournaments, and live scorecards — with fully documented REST APIs built for frontend integration.',
+    textIndex: 5,
     badges: ['Laravel', 'MySQL', 'REST API', 'Admin Panel'],
     demo: null,
   },
 ];
 
-export default function Projects() {
+export default function Projects({ t }) {
   const ProjectLinks = ({ project }) => (
     <div className="pl">
-      <a href={project.demo} target="_blank" rel="noreferrer">Live Demo</a>
+      <a href={project.demo} target="_blank" rel="noreferrer">{t.liveDemo}</a>
     </div>
   );
 
@@ -68,23 +62,33 @@ export default function Projects() {
     <section id="projects" className="projects-sec">
       <div className="container">
         <div className="rv text-center mb-5">
-          <div className="eyebrow">Portfolio</div>
-          <h2 className="sec-title">Projects</h2>
-          <p className="sec-sub">Selected React and Laravel builds with live product links, tech stacks, and clear outcomes.</p>
+          <div className="eyebrow">{t.eyebrow}</div>
+          <h2 className="sec-title">{t.title}</h2>
+          <p className="sec-sub">{t.subtitle}</p>
         </div>
 
         <div className="pg">
           {projects.map((project, index) => (
-            <article className="pc rv" style={{ transitionDelay: `${index * 0.08}s` }} key={project.title}>
+            <article className="pc rv" style={{ transitionDelay: `${index * 0.08}s` }} key={t.items[project.textIndex].title}>
               <div className={`pv ${project.class}`}>
-                <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={t.items[project.textIndex].title} />
               </div>
               <div className="pb">
                 <div className="pbadges">
                   {project.badges.map((badge) => <span className="bge" key={badge}>{badge}</span>)}
                 </div>
-                <h3 className="pt">{project.title}</h3>
-                <p className="pd">{project.desc}</p>
+                <h3 className="pt">{t.items[project.textIndex].title}</h3>
+                <p className="pd">{t.items[project.textIndex].desc}</p>
+                <div className="pnarrative">
+                  <div>
+                    <span>{t.problem}</span>
+                    <p>{t.items[project.textIndex].problem}</p>
+                  </div>
+                  <div>
+                    <span>{t.solution}</span>
+                    <p>{t.items[project.textIndex].solution}</p>
+                  </div>
+                </div>
                 <div className="pf">
                   <ProjectLinks project={project} />
                 </div>

@@ -60,7 +60,35 @@
 
 .hero-copy { min-width: 0; }
 
-.badge {
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 18% 24%, rgba(255, 255, 255, .08) 0 1px, transparent 2px),
+    radial-gradient(circle at 64% 18%, rgba(34, 211, 238, .16) 0 1px, transparent 2px),
+    radial-gradient(circle at 84% 62%, rgba(59, 130, 246, .18) 0 1px, transparent 2px);
+  background-size: 180px 180px, 220px 220px, 260px 260px;
+  animation: particleDrift 18s linear infinite;
+  opacity: .65;
+}
+
+@keyframes particleDrift {
+  to { background-position: 180px 180px, -220px 220px, 260px -260px; }
+}
+
+.hero-badges {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+  animation: fadeUp .8s ease both;
+}
+
+.badge,
+.work-badge {
   display: inline-flex;
   align-items: center;
   gap: .45rem;
@@ -73,9 +101,15 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--blue2);
-  margin-bottom: 1.2rem;
-  animation: fadeUp .8s ease both;
 }
+
+.work-badge {
+  background: rgba(34, 197, 94, .08);
+  border-color: rgba(34, 197, 94, .22);
+  color: #86efac;
+}
+
+:root[data-theme='light'] .work-badge { color: #15803d; }
 
 .dot {
   width: 7px;
@@ -91,6 +125,8 @@
 }
 
 .hero-kicker {
+  display: inline-flex;
+  width: fit-content;
   color: var(--cyan);
   font-weight: 800;
   letter-spacing: 2px;
@@ -98,6 +134,23 @@
   font-size: .78rem;
   margin-bottom: .7rem;
   animation: fadeUp .8s .05s ease both;
+}
+
+.hero-kicker span {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--cyan);
+  animation: typing 3.4s steps(22) 1s both, caretBlink .8s step-end infinite;
+}
+
+@keyframes typing {
+  from { max-width: 0; }
+  to { max-width: 24ch; }
+}
+
+@keyframes caretBlink {
+  50% { border-color: transparent; }
 }
 
 .hero h1 {
@@ -133,6 +186,35 @@
   margin-bottom: 1.6rem;
   font-weight: 300;
   animation: fadeUp .8s .22s ease both;
+}
+
+.current-work {
+  display: grid;
+  gap: .35rem;
+  max-width: 590px;
+  padding: .85rem 1rem;
+  margin-bottom: 1.4rem;
+  border: 1px solid rgba(59, 130, 246, .24);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .035);
+  backdrop-filter: blur(14px);
+  animation: fadeUp .8s .26s ease both;
+}
+
+:root[data-theme='light'] .current-work { background: rgba(255, 255, 255, .72); }
+
+.current-work span {
+  color: var(--blue2);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.current-work strong {
+  color: var(--text);
+  font-size: .9rem;
+  line-height: 1.55;
 }
 
 .pills {

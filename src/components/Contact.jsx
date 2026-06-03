@@ -1,9 +1,10 @@
-﻿import '../assets/css/Contact.css';
 import { useState } from 'react';
+import '../assets/css/Contact.css';
+import SocialIcon from './SocialIcon';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || '';
 
-export default function Contact() {
+export default function Contact({ t }) {
   const [status, setStatus] = useState('idle');
 
   const handleSubmit = async (event) => {
@@ -13,9 +14,9 @@ export default function Contact() {
 
     if (!FORMSPREE_ENDPOINT) {
       const name = `${data.get('firstName') || ''} ${data.get('lastName') || ''}`.trim();
-      const subject = encodeURIComponent(`Portfolio inquiry from ${name || 'Website Visitor'}`);
+      const subject = encodeURIComponent(`${t.mailSubject} ${name || t.visitor}`);
       const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${data.get('email')}\nBudget: ${data.get('budget')}\nProject Type: ${data.get('projectType')}\n\n${data.get('message')}`
+        `${t.mailFields.name}: ${name}\n${t.mailFields.email}: ${data.get('email')}\n${t.mailFields.budget}: ${data.get('budget')}\n${t.mailFields.projectType}: ${data.get('projectType')}\n\n${data.get('message')}`
       );
       window.location.href = `mailto:talhaahmad316@gmail.com?subject=${subject}&body=${body}`;
       setStatus('sent');
@@ -42,48 +43,48 @@ export default function Contact() {
     <section id="contact" className="contact-sec">
       <div className="container py-5">
         <div className="rv text-center mb-5">
-          <div className="eyebrow">Contact</div>
-          <h2 className="sec-title">Let's Build Together</h2>
-          <p className="sec-sub">Have a project idea or a collaboration in mind? Send the details and I will get back to you.</p>
+          <div className="eyebrow">{t.eyebrow}</div>
+          <h2 className="sec-title">{t.title}</h2>
+          <p className="sec-sub">{t.subtitle}</p>
         </div>
 
         <div className="cg">
           <div className="cc-list rv">
             <a className="cc" href="mailto:talhaahmad316@gmail.com">
-              <div className="ci">@</div><div><div className="cl">Email</div><div className="cv">talhaahmad316@gmail.com</div></div>
+              <div className="ci"><SocialIcon name="email" /></div><div><div className="cl">{t.email}</div><div className="cv">talhaahmad316@gmail.com</div></div>
             </a>
             <a className="cc" href="https://github.com/talhaahmad316" target="_blank" rel="noreferrer">
-              <div className="ci">gh</div><div><div className="cl">GitHub</div><div className="cv">github.com/talhaahmad316</div></div>
+              <div className="ci"><SocialIcon name="github" /></div><div><div className="cl">GitHub</div><div className="cv">github.com/talhaahmad316</div></div>
             </a>
             <a className="cc" href="https://www.linkedin.com/in/talha-ahmad-153286150/" target="_blank" rel="noreferrer">
-              <div className="ci">in</div><div><div className="cl">LinkedIn</div><div className="cv">linkedin.com/in/talha-ahmad</div></div>
+              <div className="ci"><SocialIcon name="linkedin" /></div><div><div className="cl">LinkedIn</div><div className="cv">linkedin.com/in/talha-ahmad</div></div>
             </a>
             <a className="cc" href="https://wa.me/923013493802" target="_blank" rel="noreferrer">
-              <div className="ci">wa</div><div><div className="cl">WhatsApp</div><div className="cv">+92 301 349 3802</div></div>
+              <div className="ci"><SocialIcon name="whatsapp" /></div><div><div className="cl">WhatsApp</div><div className="cv">+92 301 349 3802</div></div>
             </a>
           </div>
 
           <form className="form rv" onSubmit={handleSubmit} style={{ transitionDelay: '.1s' }}>
             <div className="fr">
               <div className="fg">
-                <label className="fl" htmlFor="firstName">First Name</label>
-                <input className="fi" id="firstName" name="firstName" type="text" placeholder="John" required />
+                <label className="fl" htmlFor="firstName">{t.firstName}</label>
+                <input className="fi" id="firstName" name="firstName" type="text" placeholder={t.placeholders.firstName} required />
               </div>
               <div className="fg">
-                <label className="fl" htmlFor="lastName">Last Name</label>
-                <input className="fi" id="lastName" name="lastName" type="text" placeholder="Doe" />
+                <label className="fl" htmlFor="lastName">{t.lastName}</label>
+                <input className="fi" id="lastName" name="lastName" type="text" placeholder={t.placeholders.lastName} />
               </div>
             </div>
 
             <div className="fg">
-              <label className="fl" htmlFor="email">Email</label>
-              <input className="fi" id="email" name="email" type="email" placeholder="you@company.com" required />
+              <label className="fl" htmlFor="email">{t.email}</label>
+              <input className="fi" id="email" name="email" type="email" placeholder={t.placeholders.email} required />
             </div>
 
             <div className="fg">
-              <label className="fl" htmlFor="budget">Budget Range</label>
+              <label className="fl" htmlFor="budget">{t.budget}</label>
               <select className="fse" id="budget" name="budget" defaultValue="">
-                <option value="" disabled>Select budget...</option>
+                <option value="" disabled>{t.selectBudget}</option>
                 <option>$500 - $1,500</option>
                 <option>$1,500 - $5,000</option>
                 <option>$5,000 - $15,000</option>
@@ -92,20 +93,20 @@ export default function Contact() {
             </div>
 
             <div className="fg">
-              <label className="fl" htmlFor="projectType">Project Type</label>
-              <input className="fi" id="projectType" name="projectType" type="text" placeholder="SaaS, e-commerce, dashboard..." />
+              <label className="fl" htmlFor="projectType">{t.projectType}</label>
+              <input className="fi" id="projectType" name="projectType" type="text" placeholder={t.placeholders.projectType} />
             </div>
 
             <div className="fg">
-              <label className="fl" htmlFor="message">Message</label>
-              <textarea className="ft" id="message" name="message" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+              <label className="fl" htmlFor="message">{t.message}</label>
+              <textarea className="ft" id="message" name="message" placeholder={t.placeholders.message} required></textarea>
             </div>
 
             <button className={`fs ${status === 'sent' ? 'sent' : ''}`} type="submit" disabled={status === 'sending'}>
-              {status === 'sending' ? 'Sending...' : status === 'sent' ? 'Message Ready' : 'Send Message'}
+              {status === 'sending' ? t.sending : status === 'sent' ? t.sent : t.send}
             </button>
-            {status === 'error' && <p className="form-note error">Something went wrong. Please email me directly.</p>}
-            {!FORMSPREE_ENDPOINT && <p className="form-note">Tip: add VITE_FORMSPREE_ENDPOINT to use Formspree. Until then, this opens your email app.</p>}
+            {status === 'error' && <p className="form-note error">{t.error}</p>}
+            {!FORMSPREE_ENDPOINT && <p className="form-note">{t.tip}</p>}
           </form>
         </div>
       </div>

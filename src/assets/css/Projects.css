@@ -90,8 +90,39 @@
   font-size: .84rem;
   color: var(--muted);
   line-height: 1.65;
-  flex: 1;
   margin-bottom: 1rem;
+}
+
+.pnarrative {
+  display: grid;
+  gap: .65rem;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.pnarrative div {
+  padding: .7rem;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .025);
+}
+
+:root[data-theme='light'] .pnarrative div { background: rgba(255, 255, 255, .58); }
+
+.pnarrative span {
+  display: block;
+  color: var(--blue2);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin-bottom: .25rem;
+}
+
+.pnarrative p {
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.55;
 }
 
 .pf {

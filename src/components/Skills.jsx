@@ -2,7 +2,7 @@
 
 const groups = [
   {
-    title: 'Frontend',
+    titleKey: 'frontend',
     skills: [
       { icon: 'devicon-react-original colored', name: 'React' },
       { icon: 'devicon-javascript-plain colored', name: 'JavaScript' },
@@ -12,7 +12,7 @@ const groups = [
     ],
   },
   {
-    title: 'Languages',
+    titleKey: 'languages',
     skills: [
       { icon: 'devicon-php-plain colored', name: 'PHP' },
       { icon: 'devicon-mysql-plain colored', name: 'MySQL' },
@@ -21,7 +21,7 @@ const groups = [
     ],
   },
   {
-    title: 'Tools',
+    titleKey: 'tools',
     skills: [
       { icon: 'devicon-laravel-original colored', name: 'Laravel' },
       { icon: 'devicon-git-plain colored', name: 'Git' },
@@ -31,20 +31,20 @@ const groups = [
   },
 ];
 
-export default function Skills() {
+export default function Skills({ t }) {
   return (
     <section id="skills" className="skills-sec">
       <div className="container">
         <div className="rv text-center mb-5">
-          <div className="eyebrow">Expertise</div>
-          <h2 className="sec-title">My Tech Stack</h2>
-          <p className="sec-sub">A focused stack for building responsive interfaces, dependable backends, and practical product workflows.</p>
+          <div className="eyebrow">{t.eyebrow}</div>
+          <h2 className="sec-title">{t.title}</h2>
+          <p className="sec-sub">{t.subtitle}</p>
         </div>
 
         <div className="skill-groups" id="skills-grid">
           {groups.map((group, groupIndex) => (
-            <div className="skill-group rv" style={{ transitionDelay: `${groupIndex * 0.08}s` }} key={group.title}>
-              <h3>{group.title}</h3>
+            <div className="skill-group rv" style={{ transitionDelay: `${groupIndex * 0.08}s` }} key={group.titleKey}>
+              <h3>{t.groups[group.titleKey]}</h3>
               <div className="skill-list">
                 {group.skills.map((skill) => (
                   <div className="skill-chip" key={skill.name}>

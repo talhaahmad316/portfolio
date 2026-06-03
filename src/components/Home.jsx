@@ -1,6 +1,6 @@
 ﻿import '../assets/css/Home.css';
 
-export default function Home() {
+export default function Home({ t }) {
   return (
     <section className="hero" id="hero">
       <div className="grid-bg"></div>
@@ -9,15 +9,23 @@ export default function Home() {
 
       <div className="hero-inner">
         <div className="hero-copy">
-          <div className="badge"><span className="dot"></span>Available for Projects</div>
-          <p className="hero-kicker">Full Stack Developer</p>
+          <div className="hero-badges">
+            <div className="badge"><span className="dot"></span>{t.badge}</div>
+            <div className="work-badge">{t.openToWork}</div>
+          </div>
+          <p className="hero-kicker"><span>{t.role}</span></p>
           <h1>
-            Hi, I'm <span className="grad">Talha Ahmad</span>
+            {t.intro} <span className="grad">Talha Ahmad</span>
           </h1>
-          <p className="tagline">React and Laravel developer who turns business ideas into polished, reliable web applications.</p>
+          <p className="tagline">{t.tagline}</p>
           <p className="hero-p">
-            I build fast frontends, clean APIs, and dashboard experiences for SaaS, ERP, marketplace, and automation products.
+            {t.description}
           </p>
+
+          <div className="current-work">
+            <span>{t.currentLabel}</span>
+            <strong>{t.currentText}</strong>
+          </div>
 
           <div className="pills">
             <span className="pill">React.js</span>
@@ -28,25 +36,25 @@ export default function Home() {
           </div>
 
           <div className="hero-btns">
-            <a className="btn-p" href="#projects">View My Work</a>
-            <a className="btn-o" href="/Talha Ahmad.pdf" download>Download CV</a>
+            <a className="btn-p" href="#projects">{t.viewWork}</a>
+            <a className="btn-o" href="/Talha Ahmad.pdf" download>{t.downloadCv}</a>
           </div>
         </div>
 
         <div className="photo-wrap">
           <div className="photo-card">
-            <img src="/talha.png" alt="Talha Ahmad - Full Stack Developer" />
+            <img src="/talha.png" alt={t.imageAlt} />
             <div className="photo-ov"></div>
             <div className="photo-info">
               <div className="av">TA</div>
               <div>
                 <div className="pn">Talha Ahmad</div>
-                <div className="pr">Lahore, PK - Remote Friendly</div>
+                <div className="pr">{t.location}</div>
               </div>
             </div>
           </div>
-          <div className="ftag e"><span className="ftag-n">3+</span>Years Exp.</div>
-          <div className="ftag p"><span className="ftag-n">20+</span>Projects</div>
+          <div className="ftag e"><span className="ftag-n">3+</span>{t.years}</div>
+          <div className="ftag p"><span className="ftag-n">20+</span>{t.projects}</div>
         </div>
       </div>
     </section>
