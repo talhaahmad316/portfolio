@@ -1,4 +1,6 @@
-﻿.contact-sec { background: var(--bg2); }
+﻿/* ─── existing styles ───────────────────────────────────────────── */
+
+.contact-sec { background: var(--bg2); }
 
 .cg {
   display: grid;
@@ -159,4 +161,247 @@
 @media(max-width:860px) {
   .cg { grid-template-columns: 1fr; gap: 1.5rem; }
   .fr { grid-template-columns: 1fr; }
+}
+
+
+/* ─── File Attachment ──────────────────────────────────────────────
+   Gold accent theme to match the SweetAlert brand colour (#e2b96f)
+   ─────────────────────────────────────────────────────────────────*/
+
+.fa-optional {
+  font-size: .65rem;
+  color: var(--dim);
+  letter-spacing: .3px;
+  text-transform: none;
+  font-weight: 500;
+  margin-left: .3rem;
+}
+
+/* ── Drop zone ── */
+.fa-dropzone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  padding: 1.6rem 1rem;
+  border: 1.5px dashed rgba(226, 185, 111, .35);
+  border-radius: 11px;
+  background: rgba(226, 185, 111, .03);
+  cursor: pointer;
+  transition: border-color .22s, background .22s, transform .18s;
+  text-align: center;
+  outline: none;
+  user-select: none;
+}
+
+.fa-dropzone:hover,
+.fa-dropzone:focus-visible {
+  border-color: rgba(226, 185, 111, .65);
+  background: rgba(226, 185, 111, .06);
+  transform: translateY(-1px);
+}
+
+.fa-dropzone.fa-drag-over {
+  border-color: #e2b96f;
+  background: rgba(226, 185, 111, .1);
+  transform: scale(1.012);
+}
+
+.fa-upload-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(226, 185, 111, .12);
+  color: #e2b96f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: .3rem;
+  transition: background .22s;
+}
+
+.fa-dropzone:hover .fa-upload-icon,
+.fa-drag-over .fa-upload-icon {
+  background: rgba(226, 185, 111, .22);
+}
+
+.fa-upload-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.fa-drop-title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.fa-drop-sub {
+  font-size: .78rem;
+  color: var(--dim);
+  margin: 0;
+}
+
+.fa-browse {
+  color: #e2b96f;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fa-drop-hint {
+  font-size: .68rem;
+  color: var(--dim);
+  opacity: .65;
+  margin: .15rem 0 0;
+}
+
+.fa-hidden-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: none; /* clicks go through the div, not the input */
+}
+
+/* ── Preview card (shown after file selected) ── */
+.fa-preview-card {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  padding: .75rem .9rem;
+  border: 1.5px solid rgba(226, 185, 111, .4);
+  border-radius: 11px;
+  background: rgba(226, 185, 111, .05);
+  animation: fa-slide-in .22s ease;
+}
+
+@keyframes fa-slide-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Image thumbnail */
+.fa-img-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid rgba(226, 185, 111, .3);
+}
+
+.fa-img-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fa-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 163, 74, .55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.fa-img-overlay svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Generic file icon */
+.fa-file-icon-wrap {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: rgba(226, 185, 111, .1);
+  color: #e2b96f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-file-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* File metadata */
+.fa-file-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.fa-file-name {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 .12rem;
+}
+
+.fa-file-size {
+  font-size: .72rem;
+  color: #e2b96f;
+  font-weight: 600;
+  margin: 0 0 .08rem;
+}
+
+.fa-file-type {
+  font-size: .67rem;
+  color: var(--dim);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+
+/* Remove button */
+.fa-remove-btn {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(248, 113, 113, .3);
+  background: rgba(248, 113, 113, .08);
+  color: #f87171;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, border-color .2s, transform .15s;
+  padding: 0;
+}
+
+.fa-remove-btn:hover {
+  background: rgba(248, 113, 113, .2);
+  border-color: rgba(248, 113, 113, .6);
+  transform: scale(1.1);
+}
+
+.fa-remove-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Light theme overrides */
+:root[data-theme='light'] .fa-dropzone {
+  background: rgba(226, 185, 111, .04);
+}
+
+:root[data-theme='light'] .fa-preview-card {
+  background: rgba(226, 185, 111, .06);
 }
