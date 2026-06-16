@@ -342,3 +342,55 @@
   .hero-btns .btn-o { width: 100%; }
   .ftag { right: .75rem !important; }
 }
+
+
+/* Animated button */
+
+/* Scramble button additions */
+.btn-scramble {
+  position: relative;
+  overflow: hidden;
+  font-family: monospace;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+
+.btn-scramble-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* The shimmer sweep — mirrors your existing gold/outline palette */
+.btn-scramble-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transform: scaleX(1.2) scaleY(1.4);
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    transparent 38%,
+    rgba(212, 175, 55, 0.55) 50%,
+    transparent 62%,
+    transparent 100%
+  );
+  opacity: 0;
+  animation: shine-scroll 1s linear infinite;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.btn-scramble:hover .btn-scramble-shine {
+  opacity: 1;
+}
+
+@keyframes shine-scroll {
+  0%   { transform: scaleX(1.2) translateY(100%); }
+  100% { transform: scaleX(1.2) translateY(-100%); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-scramble-shine { animation: none; }
+  .btn-scramble-text  { transition: none; }
+}

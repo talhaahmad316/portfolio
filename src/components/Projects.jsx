@@ -5,6 +5,7 @@ import img3 from '../assets/images/cnc.png';
 import img4 from '../assets/images/ngo.png';
 import img5 from '../assets/images/audit.png';
 import img6 from '../assets/images/ucl.png';
+import ScrambleBtn from '../helper/ScrambleBtn';
 
 const projects = [
   {
@@ -47,14 +48,15 @@ const projects = [
     class: 'c6',
     textIndex: 5,
     badges: ['Laravel', 'MySQL', 'REST API', 'Admin Panel'],
-    demo: null,
+    demo: '#',
   },
 ];
 
 export default function Projects({ t }) {
   const ProjectLinks = ({ project }) => (
     <div className="pl">
-      <a href={project.demo} target="_blank" rel="noreferrer">{t.liveDemo}</a>
+      <ScrambleBtn label={t.liveDemo} href={project.demo} target="_blank" />
+      {/* <a href={project.demo} target="_blank" rel="noreferrer">{t.liveDemo}</a> */}
     </div>
   );
 

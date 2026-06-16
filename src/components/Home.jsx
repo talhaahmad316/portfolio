@@ -1,4 +1,11 @@
-﻿import '../assets/css/Home.css';
+﻿import { useRef, useState } from "react";
+import '../assets/css/Home.css';
+import ScrambleBtn from '../helper/ScrambleBtn';
+
+const CYCLES_PER_LETTER = 2;
+const SHUFFLE_TIME = 50;
+const CHARS = "!@#$%^&*():{};|,.<>/?";
+
 
 export default function Home({ t }) {
   return (
@@ -36,8 +43,8 @@ export default function Home({ t }) {
           </div>
 
           <div className="hero-btns">
-            <a className="btn-p" href="#projects">{t.viewWork}</a>
-            <a className="btn-o" href="/Talha Ahmad.pdf" download>{t.downloadCv}</a>
+            <ScrambleBtn label={t.viewWork} href="#projects" className="btn-p" />
+            <ScrambleBtn label={t.downloadCv} href="/Talha Ahmad.pdf" className="btn-o" download />
           </div>
         </div>
 

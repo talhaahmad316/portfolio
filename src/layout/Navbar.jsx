@@ -1,5 +1,6 @@
 ﻿import '../assets/css/Navbar.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import ScrambleBtn from '../helper/ScrambleBtn';
 
 const navItems = [
   { id: 'hero', label: 'home' },
@@ -9,6 +10,12 @@ const navItems = [
   { id: 'blog', label: 'blog' },
   { id: 'contact', label: 'contact' },
 ];
+
+const CYCLES_PER_LETTER = 2;
+const SHUFFLE_TIME = 50;
+const CHARS = "!@#$%^&*():{};|,.<>/?";
+
+
 
 export default function Navbar({ theme, language, languages, t, onChangeLanguage, onToggleTheme }) {
   const [scrollWidth, setScrollWidth] = useState(0);
@@ -59,9 +66,12 @@ export default function Navbar({ theme, language, languages, t, onChangeLanguage
       </ul>
 
       <div className="nav-actions">
-        <button className="theme-toggle" type="button" onClick={onToggleTheme} aria-label="Toggle color theme">
-          <span>{theme === 'dark' ? t.themeLight : t.themeDark}</span>
-        </button>
+        <ScrambleBtn
+          label={theme === 'dark' ? t.themeLight : t.themeDark}
+          onClick={onToggleTheme}
+          className="theme-toggle"
+          ariaLabel="Toggle color theme"
+        />
         <div className="language-switch" aria-label={t.languageLabel}>
           {languages.map((item) => (
             <button
