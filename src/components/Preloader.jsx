@@ -3,11 +3,12 @@ import '../assets/css/Preloader.css';
 
 export default function Preloader() {
     const [progress, setProgress] = useState(0);
-    const [hide, setHide] = useState(false);
+    const [isExiting, setIsExiting] = useState(false);
+    const [isMounted, setIsMounted] = useState(true);
 
     useEffect(() => {
         const startDelay = 200;
-        const totalDuration = 500;
+        const totalDuration = 1400;
 
         let animationFrame;
 
@@ -30,27 +31,29 @@ export default function Preloader() {
             animationFrame = requestAnimationFrame(tick);
         }, startDelay);
 
-        const exitTimeout = setTimeout(() => {
-            setHide(true);
-        }, 2000);
+        const exitTimeout = setTimeout(() => setIsExiting(true), 2100);
+        const unmountTimeout = setTimeout(() => setIsMounted(false), 2800);
 
         return () => {
             clearTimeout(delayTimeout);
             clearTimeout(exitTimeout);
+            clearTimeout(unmountTimeout);
             cancelAnimationFrame(animationFrame);
         };
     }, []);
 
-    if (hide) return null;
+    if (!isMounted) return null;
 
     return (
         <div
-            className={`preloader ${hide ? "preloader--exit" : ""}`}
+            className={`preloader ${isExiting ? "preloader--exit" : ""}`}
             id="preloader"
             role="status"
             aria-label="Loading portfolio"
         >
-            <div className="pl-grid" aria-hidden="true"></div>
+            <div className="pl-depth-grid" aria-hidden="true"></div>
+            <div className="pl-aurora pl-aurora--blue" aria-hidden="true"></div>
+            <div className="pl-aurora pl-aurora--violet" aria-hidden="true"></div>
             <div className="pl-scanline" aria-hidden="true"></div>
 
             <div
@@ -70,13 +73,27 @@ export default function Preloader() {
                 aria-hidden="true"
             ></div>
 
-            <div className="pl-ring-wrap" aria-hidden="true">
-                <div className="pl-ring pl-ring--outer"></div>
-                <div className="pl-ring pl-ring--inner"></div>
-
-                <div className="pl-image">
-                    <img src="/talhamini.PNG" alt="Talha Ahmad" />
+            <div className="pl-stage" aria-hidden="true">
+                <div className="pl-orbit pl-orbit--one">
+                    <span></span>
                 </div>
+                <div className="pl-orbit pl-orbit--two">
+                    <span></span>
+                </div>
+                <div className="pl-orbit pl-orbit--three">
+                    <span></span>
+                </div>
+
+                <div className="pl-halo pl-halo--back"></div>
+                <div className="pl-cube">
+                    <div className="pl-cube-face pl-cube-face--front">T</div>
+                    <div className="pl-cube-face pl-cube-face--back">A</div>
+                    <div className="pl-cube-face pl-cube-face--right"></div>
+                    <div className="pl-cube-face pl-cube-face--left"></div>
+                    <div className="pl-cube-face pl-cube-face--top"></div>
+                    <div className="pl-cube-face pl-cube-face--bottom"></div>
+                </div>
+                <div className="pl-halo pl-halo--front"></div>
             </div>
 
             <div className="pl-name-block">

@@ -12,13 +12,11 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './layout/Footer';
 import Preloader from './components/Preloader';
-import { languages, translations } from './data/translations';
+import { translations } from './data/translations';
 
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
-  const [language, setLanguage] = useState(() => localStorage.getItem('language') || 'en');
-  const activeLanguage = languages.find((item) => item.code === language) || languages[0];
-  const t = translations[activeLanguage.code] || translations.en;
+  const t = translations.en;
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -26,10 +24,10 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
-    document.documentElement.lang = activeLanguage.code;
-    document.documentElement.dir = activeLanguage.dir;
-    localStorage.setItem('language', activeLanguage.code);
-  }, [activeLanguage]);
+    document.documentElement.lang = 'en';
+    document.documentElement.dir = 'ltr';
+    localStorage.removeItem('language');
+  }, []);
 
   useEffect(() => {
     const cleanup = initAnimations();
@@ -114,10 +112,7 @@ function App() {
       <Preloader />
       <Navbar
         theme={theme}
-        language={activeLanguage.code}
-        languages={languages}
         t={t.nav}
-        onChangeLanguage={setLanguage}
         onToggleTheme={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       />
       <Home t={t.home} />

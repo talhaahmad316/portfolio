@@ -21,7 +21,7 @@ export default function About({ t }) {
           <div className="rl">
             <div className="ap-wrap">
               <div className="ap">
-                <img src="/talha.png" alt="Talha Ahmad" />
+                {/* <img src="/talha.png" alt="Talha Ahmad" /> */}
                 <div className="ap-deco"></div>
               </div>
               <div className="astats">

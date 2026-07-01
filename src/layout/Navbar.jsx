@@ -1,5 +1,5 @@
 ﻿import '../assets/css/Navbar.css';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import ScrambleBtn from '../helper/ScrambleBtn';
 
 const navItems = [
@@ -11,13 +11,7 @@ const navItems = [
   { id: 'contact', label: 'contact' },
 ];
 
-const CYCLES_PER_LETTER = 2;
-const SHUFFLE_TIME = 50;
-const CHARS = "!@#$%^&*():{};|,.<>/?";
-
-
-
-export default function Navbar({ theme, language, languages, t, onChangeLanguage, onToggleTheme }) {
+export default function Navbar({ theme, t, onToggleTheme }) {
   const [scrollWidth, setScrollWidth] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -72,20 +66,6 @@ export default function Navbar({ theme, language, languages, t, onChangeLanguage
           className="theme-toggle"
           ariaLabel="Toggle color theme"
         />
-        <div className="language-switch" aria-label={t.languageLabel}>
-          {languages.map((item) => (
-            <button
-              className={language === item.code ? 'active' : ''}
-              type="button"
-              onClick={() => onChangeLanguage(item.code)}
-              aria-pressed={language === item.code}
-              title={item.label}
-              key={item.code}
-            >
-              <span aria-hidden="true">{item.code === 'en' ? 'A' : 'ع'}</span>
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className="nav-progress" style={{ width: `${scrollWidth}%` }}></div>
