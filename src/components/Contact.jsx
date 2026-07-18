@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import '../assets/css/Contact.css';
 import SocialIcon from './SocialIcon';
+import SuccessAlert from './SuccessAlert';
 import Swal from 'sweetalert2';
 
 const API_URL = 'https://mycargomanager.com/workstation_backend/api/contact/send/mail';
@@ -10,8 +11,8 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 function FileIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-      <polyline points="14 2 14 8 20 8"/>
+      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+      <polyline points="14 2 14 8 20 8" />
     </svg>
   );
 }
@@ -19,9 +20,9 @@ function FileIcon() {
 function UploadIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="16 16 12 12 8 16"/>
-      <line x1="12" y1="12" x2="12" y2="21"/>
-      <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+      <polyline points="16 16 12 12 8 16" />
+      <line x1="12" y1="12" x2="12" y2="21" />
+      <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
     </svg>
   );
 }
@@ -29,8 +30,8 @@ function UploadIcon() {
 function XIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18"/>
-      <line x1="6" y1="6" x2="18" y2="18"/>
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
 }
@@ -38,7 +39,7 @@ function XIcon() {
 function CheckIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="20 6 9 17 4 12"/>
+      <polyline points="20 6 9 17 4 12" />
     </svg>
   );
 }
@@ -54,10 +55,11 @@ function isImage(file) {
 }
 
 export default function Contact({ t }) {
-  const [status, setStatus]       = useState('idle');
+  const [status, setStatus] = useState('idle');
   const [attachedFile, setAttachedFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [dragActive, setDragActive]     = useState(false);
+  const [dragActive, setDragActive] = useState(false);
+  const [successAlert, setSuccessAlert] = useState(null); // boolean (hasAttachment) | null
   const fileInputRef = useRef(null);
 
   // ─── File handling ─────────────────────────────────────────────
@@ -109,11 +111,11 @@ export default function Contact({ t }) {
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    const firstName   = data.get('firstName')?.trim();
-    const lastName    = data.get('lastName')?.trim();
-    const email       = data.get('email')?.trim();
+    const firstName = data.get('firstName')?.trim();
+    const lastName = data.get('lastName')?.trim();
+    const email = data.get('email')?.trim();
     const projectType = data.get('projectType')?.trim();
-    const message     = data.get('message')?.trim();
+    const message = data.get('message')?.trim();
 
     if (!firstName) {
       Swal.fire({ icon: 'warning', title: 'First Name Required', text: 'Please enter your first name.', confirmButtonColor: '#e2b96f', background: '#1a1a2e', color: '#ffffff' });
@@ -161,20 +163,14 @@ export default function Contact({ t }) {
         return;
       }
 
+      // Capture what we need for the alert BEFORE clearing the form/file state
+      const hadAttachment = !!attachedFile;
+
       form.reset();
       removeFile();
       setStatus('sent');
 
-      Swal.fire({
-        icon: 'success',
-        title: 'Message Sent!',
-        html: `<p style="color:rgba(255,255,255,0.75);font-size:14px;margin:0;">Thanks <strong style="color:#e2b96f;">${firstName}</strong>, I'll get back to you shortly.</p>`,
-        confirmButtonColor: '#e2b96f',
-        background: '#1a1a2e',
-        color: '#ffffff',
-        timer: 4000,
-        timerProgressBar: true,
-      });
+      setSuccessAlert(hadAttachment);
 
     } catch (error) {
       setStatus('error');
@@ -315,6 +311,13 @@ export default function Contact({ t }) {
           </form>
         </div>
       </div>
+
+      {successAlert !== null && (
+        <SuccessAlert
+          hasAttachment={successAlert}
+          onClose={() => setSuccessAlert(null)}
+        />
+      )}
     </section>
   );
 }

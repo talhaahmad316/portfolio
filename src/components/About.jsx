@@ -1,4 +1,4 @@
-﻿import { useRef, useState } from "react";
+﻿import { useRef, useState, useEffect } from "react";
 import '../assets/css/About.css';
 import ScrambleBtn from '../helper/ScrambleBtn';
 
@@ -6,7 +6,62 @@ const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 50;
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
+const STATS_CONFIG = [
+  { value: 3, suffix: '+' },
+  { value: 20, suffix: '+' },
+  { value: 15, suffix: '+' },
+  { value: 99, suffix: '%' },
+];
 
+function AnimatedCounter({ end, suffix = '', duration = 1600 }) {
+  const [count, setCount] = useState(0);
+  const [inView, setInView] = useState(false);
+  const wrapRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const node = wrapRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          setInView(true);
+
+          const startTime = performance.now();
+
+          const tick = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // ease-out cubic — fast start, smooth settle at the end
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.round(eased * end));
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              setCount(end);
+            }
+          };
+
+          requestAnimationFrame(tick);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [end, duration]);
+
+  return (
+    <div className={`astat-n ${inView ? 'astat-n-pop' : ''}`} ref={wrapRef}>
+      {count}{suffix}
+    </div>
+  );
+}
 
 export default function About({ t }) {
   return (
@@ -25,10 +80,16 @@ export default function About({ t }) {
                 <div className="ap-deco"></div>
               </div>
               <div className="astats">
-                <div className="astat"><div className="astat-n">3+</div><div className="astat-l">{t.stats[0]}</div></div>
-                <div className="astat"><div className="astat-n">20+</div><div className="astat-l">{t.stats[1]}</div></div>
-                <div className="astat"><div className="astat-n">15+</div><div className="astat-l">{t.stats[2]}</div></div>
-                <div className="astat"><div className="astat-n">99%</div><div className="astat-l">{t.stats[3]}</div></div>
+                {STATS_CONFIG.map((stat, i) => (
+                  <div className="astat" key={i}>
+                    <AnimatedCounter
+                      end={stat.value}
+                      suffix={stat.suffix}
+                      duration={1400 + i * 180}
+                    />
+                    <div className="astat-l">{t.stats[i]}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
